@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dv6lfs71jxjku"]
+
+[ext_resource type="PackedScene" uid="uid://3e1gytsftlxq" path="res://scenes/lanes.tscn" id="1_2q6dc"]
+[ext_resource type="PackedScene" uid="uid://g4u4q4g60x4o" path="res://scenes/player.tscn" id="2_w7c3h"]
+
+[node name="Node2D" type="Node2D" unique_id=532121107]
+
+[node name="ColorRect" parent="." unique_id=1004401294 instance=ExtResource("1_2q6dc")]
+offset_left = 1.0
+offset_right = 1153.0
+
+[node name="CharacterBody2D" parent="." unique_id=1049869673 instance=ExtResource("2_w7c3h")]
+position = Vector2(492, 423)
