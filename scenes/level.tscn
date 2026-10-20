@@ -9,5 +9,7 @@
 offset_left = 1.0
 offset_right = 1153.0
 
-[node name="CharacterBody2D" parent="." unique_id=1049869673 instance=ExtResource("2_w7c3h")]
-position = Vector2(492, 423)
+[node name="Node2D" type="Node2D" parent="." unique_id=197432278]
+position = Vector2(484, 397)
+
+[node name="CharacterBody2D" parent="Node2D" unique_id=1049869673 instance=ExtResource("2_w7c3h")]

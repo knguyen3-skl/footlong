@@ -1,24 +1,19 @@
 [gd_scene format=3 uid="uid://3e1gytsftlxq"]
 
+[ext_resource type="Script" uid="uid://ddb1alj83c0kr" path="res://scripts/lanes.gd" id="1_873xp"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf3mm"]
 size = Vector2(384, 648)
 
 [node name="ColorRect" type="ColorRect" unique_id=1004401294]
 offset_right = 1152.0
 offset_bottom = 648.0
+script = ExtResource("1_873xp")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=406747697]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1198331277]
 position = Vector2(192, 324)
-shape = SubResource("RectangleShape2D_nf3mm")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1118461436]
-position = Vector2(576, 324)
-shape = SubResource("RectangleShape2D_nf3mm")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D" unique_id=121373541]
-position = Vector2(960, 324)
 shape = SubResource("RectangleShape2D_nf3mm")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2043961333]
@@ -34,3 +29,17 @@ offset_left = 762.0
 offset_right = 768.0
 offset_bottom = 648.0
 color = Color(0.48570347, 0.48570353, 0.48570347, 1)
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=166938185]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2" unique_id=1118461436]
+position = Vector2(576, 324)
+shape = SubResource("RectangleShape2D_nf3mm")
+
+[node name="Area2D3" type="Area2D" parent="." unique_id=242297243]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D3" unique_id=121373541]
+position = Vector2(960, 324)
+shape = SubResource("RectangleShape2D_nf3mm")
+
+[connection signal="area_entered" from="Area2D" to="." method="_left_lane"]
