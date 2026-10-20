@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dgmokwcb3yf54"]
+
+[ext_resource type="Texture2D" uid="uid://c8jdf2dfqquw6" path="res://assets/coin game.png" id="1_rwqht"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0t63x"]
+radius = 87.005745
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7riw"]
+radius = 77.00649
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=986393731]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=193097145]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=746468176]
+position = Vector2(76, 75)
+shape = SubResource("CircleShape2D_0t63x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=673733123]
+position = Vector2(76, 75)
+shape = SubResource("CircleShape2D_v7riw")
+
+[node name="CoinGame" type="Sprite2D" parent="." unique_id=1900211432]
+position = Vector2(75, 75)
+texture = ExtResource("1_rwqht")
+region_enabled = true
+region_rect = Rect2(164, 59.25, 150.5, 150.5)

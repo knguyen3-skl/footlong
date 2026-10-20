@@ -5,11 +5,12 @@
 
 [node name="Node2D" type="Node2D" unique_id=532121107]
 
-[node name="ColorRect" parent="." unique_id=1004401294 instance=ExtResource("1_2q6dc")]
+[node name="ColorRect" parent="." unique_id=1004401294 node_paths=PackedStringArray("player") instance=ExtResource("1_2q6dc")]
 offset_left = 1.0
 offset_right = 1153.0
+player = NodePath("../Node2D/CharacterBody2D")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=197432278]
-position = Vector2(484, 397)
+position = Vector2(481, 35)
 
 [node name="CharacterBody2D" parent="Node2D" unique_id=1049869673 instance=ExtResource("2_w7c3h")]
