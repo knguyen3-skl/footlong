@@ -8,6 +8,7 @@ size = Vector2(384, 648)
 [node name="ColorRect" type="ColorRect" unique_id=1004401294]
 offset_right = 1152.0
 offset_bottom = 648.0
+color = Color(0.9120541, 0.81206906, 0.76187176, 1)
 script = ExtResource("1_873xp")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=406747697]
@@ -41,5 +42,3 @@ shape = SubResource("RectangleShape2D_nf3mm")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D3" unique_id=121373541]
 position = Vector2(960, 324)
 shape = SubResource("RectangleShape2D_nf3mm")
-
-[connection signal="area_entered" from="Area2D" to="." method="_left_lane"]

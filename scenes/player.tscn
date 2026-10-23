@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://fyvxedpiuls1" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://c53ckrnubi73e" path="res://assets/Toothless.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://dgmokwcb3yf54" path="res://scenes/coin.tscn" id="2_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_186t8"]
-size = Vector2(119, 239)
+size = Vector2(153, 268)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u8vuu"]
 size = Vector2(119, 239)
@@ -22,6 +23,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "left_centre"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-380, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
@@ -56,23 +73,44 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(390, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "right_centre"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(390, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qhqgy"]
 _data = {
 &"RESET": SubResource("Animation_3vyb7"),
+&"left_centre": SubResource("Animation_dqkch"),
 &"move_left": SubResource("Animation_qhqgy"),
-&"move_right": SubResource("Animation_g2els")
+&"move_right": SubResource("Animation_g2els"),
+&"right_centre": SubResource("Animation_qlg0r")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1049869673 node_paths=PackedStringArray("animation", "centre_to_left", "centre_to_right") groups=["player"]]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1049869673 node_paths=PackedStringArray("animation", "centre_to_left", "centre_to_right", "left_to_centre", "right_to_centre") groups=["player"]]
 script = ExtResource("1_3vyb7")
 animation = NodePath("AnimationPlayer")
 centre_to_left = NodePath("Timer")
 centre_to_right = NodePath("Timer2")
+left_to_centre = NodePath("Timer3")
+right_to_centre = NodePath("Timer4")
+coin = ExtResource("2_qhqgy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1019322773]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=136915673]
-position = Vector2(90.5, 119.5)
+position = Vector2(91.5, 120)
 shape = SubResource("RectangleShape2D_186t8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1241227131]
@@ -93,5 +131,15 @@ wait_time = 0.5
 [node name="Timer2" type="Timer" parent="." unique_id=19891206]
 wait_time = 0.5
 
+[node name="Timer3" type="Timer" parent="." unique_id=1132084729]
+wait_time = 0.5
+
+[node name="Timer4" type="Timer" parent="." unique_id=1585920166]
+wait_time = 0.5
+
+[connection signal="area_entered" from="Area2D" to="." method="_coin_collect"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_centre_to_left"]
 [connection signal="timeout" from="Timer2" to="." method="_centre_to_right"]
+[connection signal="timeout" from="Timer3" to="." method="_left_to_centre"]
+[connection signal="timeout" from="Timer4" to="." method="_right_to_centre"]

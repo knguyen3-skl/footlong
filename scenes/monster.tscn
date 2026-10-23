@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dl74xk8nahd4f"]
+
+[ext_resource type="Script" uid="uid://bj8p4y2c71mou" path="res://scripts/monster.gd" id="1_c47ug"]
+[ext_resource type="Texture2D" uid="uid://4f674go3cj4y" path="res://assets/monster.png" id="1_uwnm8"]
+[ext_resource type="PackedScene" uid="uid://btids4jgj4ku0" path="res://scenes/phone.tscn" id="2_jlss8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cbnp"]
+size = Vector2(210, 150)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=666861519 node_paths=PackedStringArray("bullet_spawn", "bullet_timer")]
+script = ExtResource("1_c47ug")
+bullet_scene = ExtResource("2_jlss8")
+bullet_spawn = NodePath("Marker2D")
+bullet_timer = NodePath("Timer")
+
+[node name="Monster" type="Sprite2D" parent="." unique_id=1772364574]
+position = Vector2(105, 75)
+scale = Vector2(10, 10)
+texture = ExtResource("1_uwnm8")
+region_enabled = true
+region_rect = Rect2(4.9962096, 4.9852057, 21.017036, 15.044328)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=702584384]
+position = Vector2(105, 75)
+shape = SubResource("RectangleShape2D_1cbnp")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=830587925]
+position = Vector2(107, -13)
+
+[node name="Timer" type="Timer" parent="." unique_id=1370973412]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_shoot"]

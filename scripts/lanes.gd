@@ -4,6 +4,7 @@ extends ColorRect
 
 var left = Vector2(98,35)
 var right = Vector2(870,35)
+var centre = Vector2(481,35)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,9 +18,5 @@ func _process(delta: float) -> void:
 		player.global_position = left
 	elif Global.right == true:
 		player.global_position = right
-
-
-func _left_lane(area: Area2D) -> void:
-	if area.is_in_group("player"):
-		Global.left = true
-		Global.centre = false
+	elif Global.centre == true:
+		player.global_position = centre

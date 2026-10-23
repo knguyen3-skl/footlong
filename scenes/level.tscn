@@ -1,16 +1,59 @@
 [gd_scene format=3 uid="uid://dv6lfs71jxjku"]
 
 [ext_resource type="PackedScene" uid="uid://3e1gytsftlxq" path="res://scenes/lanes.tscn" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://b6ur0oy3purcd" path="res://scripts/level.gd" id="1_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://g4u4q4g60x4o" path="res://scenes/player.tscn" id="2_w7c3h"]
+[ext_resource type="PackedScene" uid="uid://dl74xk8nahd4f" path="res://scenes/monster.tscn" id="3_w8frs"]
+[ext_resource type="Texture2D" uid="uid://ccgtyrgntvqi" path="res://assets/heart_tech.png" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://btids4jgj4ku0" path="res://scenes/phone.tscn" id="5_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://dgmokwcb3yf54" path="res://scenes/coin.tscn" id="7_klq6b"]
 
-[node name="Node2D" type="Node2D" unique_id=532121107]
+[node name="Node2D" type="Node2D" unique_id=532121107 node_paths=PackedStringArray("health_1", "health_2", "health_3", "coin_1", "timer")]
+script = ExtResource("1_ppgk2")
+health_1 = NodePath("HeartTech")
+health_2 = NodePath("HeartTech2")
+health_3 = NodePath("HeartTech3")
+coin_1 = NodePath("StaticBody2D")
+timer = NodePath("Timer")
 
 [node name="ColorRect" parent="." unique_id=1004401294 node_paths=PackedStringArray("player") instance=ExtResource("1_2q6dc")]
 offset_left = 1.0
 offset_right = 1153.0
 player = NodePath("../Node2D/CharacterBody2D")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=197432278]
+[node name="Node2D" type="Node2D" parent="." unique_id=197432278 groups=["player"]]
 position = Vector2(481, 35)
 
 [node name="CharacterBody2D" parent="Node2D" unique_id=1049869673 instance=ExtResource("2_w7c3h")]
+
+[node name="CharacterBody2D" parent="." unique_id=666861519 instance=ExtResource("3_w8frs")]
+position = Vector2(860, 510)
+
+[node name="HeartTech" type="Sprite2D" parent="." unique_id=1518107]
+position = Vector2(35, 29)
+scale = Vector2(4, 3.5)
+texture = ExtResource("4_mx8sn")
+
+[node name="HeartTech2" type="Sprite2D" parent="." unique_id=943033386]
+position = Vector2(98, 29)
+scale = Vector2(4, 3.5)
+texture = ExtResource("4_mx8sn")
+
+[node name="HeartTech3" type="Sprite2D" parent="." unique_id=1131208497]
+position = Vector2(161, 29)
+scale = Vector2(4, 3.5)
+texture = ExtResource("4_mx8sn")
+
+[node name="Area2D" parent="." unique_id=1556658292 node_paths=PackedStringArray("monster") instance=ExtResource("5_ppgk2")]
+position = Vector2(582, 464)
+monster = NodePath("../CharacterBody2D")
+
+[node name="StaticBody2D" parent="." unique_id=986393731 instance=ExtResource("7_klq6b")]
+visible = false
+position = Vector2(112, 114)
+
+[node name="Timer" type="Timer" parent="." unique_id=1955489986]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_coin_spawn"]

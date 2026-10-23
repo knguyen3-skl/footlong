@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://btids4jgj4ku0"]
+
+[ext_resource type="Script" uid="uid://b6xf3wk78fpfv" path="res://scripts/phone.gd" id="1_08mii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0hps"]
+size = Vector2(66, 105)
+
+[sub_resource type="LabelSettings" id="LabelSettings_h0hps"]
+font_color = Color(0.17103916, 0.17103916, 0.17103916, 1)
+
+[node name="Area2D" type="Area2D" unique_id=1556658292]
+script = ExtResource("1_08mii")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1200643898]
+position = Vector2(0, 52.5)
+shape = SubResource("RectangleShape2D_h0hps")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1125346231]
+offset_left = -33.0
+offset_right = 33.0
+offset_bottom = 105.0
+color = Color(0.9318973, 0.93189716, 0.93189716, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1989735336]
+offset_left = -27.0
+offset_top = 14.0
+offset_right = 27.0
+offset_bottom = 89.0
+text = "iphone
+18 pro
+max"
+label_settings = SubResource("LabelSettings_h0hps")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

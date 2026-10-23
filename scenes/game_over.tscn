@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://crhd8jkxulpqm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0nqlu"]
+font_size = 200
+
+[node name="Node2D" type="Node2D" unique_id=1130103861]
+
+[node name="Label" type="Label" parent="." unique_id=1347652064]
+offset_left = 1.0
+offset_top = 178.0
+offset_right = 1147.0
+offset_bottom = 451.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_0nqlu")
+horizontal_alignment = 1
